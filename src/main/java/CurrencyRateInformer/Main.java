@@ -19,8 +19,14 @@ public class Main {
         }
 
 
+        System.out.println(cliParams.getProvider());
         System.out.println(cliParams.getFrom());
         System.out.println(cliParams.getTo());
+        CurrencyProvider provider = CurrencyProviderFactory.create(cliParams.getProvider());
+
+        provider.GetCurrencyList();
+
+        System.out.println(provider.GetCurrencyList());
 
 /*
         CurrencyProvider provider = new FixerIoCurrencyProvider();

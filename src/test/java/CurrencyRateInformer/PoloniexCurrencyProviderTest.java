@@ -1,5 +1,6 @@
 package CurrencyRateInformer;
 
+import cucumber.api.PendingException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +23,7 @@ public class PoloniexCurrencyProviderTest {
 
     @Test
     public void getRate() throws Exception {
+       // throw new PendingException();
     }
 
 }

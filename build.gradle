@@ -4,6 +4,7 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'jacoco'
 
+
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
@@ -38,7 +39,7 @@ test {
 jacocoTestReport {
     reports {
         xml.enabled true
-        html.enabled false
+        html.enabled true
     }
 }
 
