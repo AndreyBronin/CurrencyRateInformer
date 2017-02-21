@@ -6,7 +6,13 @@ jdk:
 addons:
   apt:
     packages:
-      - oracle-java8-installer # Updates JDK 8 to the latest available.
+      oracle-java8-installer # Updates JDK 8 to the latest available.
+
+before_script:
+  chmod +x gradlew
+script:
+  ./gradlew check
+  ./gradlew codeCoverageReport
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
