@@ -1,5 +1,8 @@
-package CurrencyRateInformer;
+package CurrencyRateInformer.api.fixer;
 
+import CurrencyRateInformer.CurrencyProvider;
+import CurrencyRateInformer.RateObject;
+import CurrencyRateInformer.api.fixer.FixerIoService;
 import retrofit2.Call;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.Retrofit;

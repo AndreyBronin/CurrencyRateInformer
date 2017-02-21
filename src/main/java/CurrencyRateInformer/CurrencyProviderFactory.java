@@ -1,5 +1,8 @@
 package CurrencyRateInformer;
 
+import CurrencyRateInformer.api.fixer.FixerIoCurrencyProvider;
+import CurrencyRateInformer.api.poloniex.PoloniexCurrencyProvider;
+
 /**
  * Factory for CurrencyProvider
  */

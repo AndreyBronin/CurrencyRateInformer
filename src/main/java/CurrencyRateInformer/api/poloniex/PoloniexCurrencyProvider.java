@@ -1,5 +1,7 @@
-package CurrencyRateInformer;
+package CurrencyRateInformer.api.poloniex;
 
+
+import CurrencyRateInformer.CurrencyProvider;
 
 import java.util.List;
 

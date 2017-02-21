@@ -1,5 +1,6 @@
-package CurrencyRateInformer;
+package CurrencyRateInformer.api.fixer;
 
+import CurrencyRateInformer.RateObject;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
