@@ -1,9 +1,8 @@
 package CurrencyRateInformer.api.fixer;
 
 import CurrencyRateInformer.CurrencyProvider;
-import CurrencyRateInformer.RateObject;
-import CurrencyRateInformer.api.fixer.FixerIoService;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.Retrofit;
 
@@ -18,14 +17,24 @@ public class FixerIoCurrencyProvider implements CurrencyProvider {
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.fixer.io/latest")
+                .baseUrl("http://api.fixer.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        FixerIoService service = retrofit.create(FixerIoService.class);
-        Call<List<RateObject>> repos = service.latest("USD");
-        //repos.execute();
+        Api service = retrofit.create(Api.class);
+        //Call<ApiResponse> call = service.getCurrencyList("USD");
+        Call<ApiResponse> call = service.getRate("RUB", "USD");
+        Response<ApiResponse> responce;
 
+        try {
+            responce = call.execute();
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+
+        ApiResponse r = responce.body();
 
         return null;
     }
