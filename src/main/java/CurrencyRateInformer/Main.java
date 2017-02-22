@@ -28,6 +28,12 @@ public class Main {
             jCommander.usage();
         }
 
+        if (cliParams.isHelp())
+        {
+            jCommander.usage();
+            System.exit(0);
+        }
+
         if (cliParams.isProviders())
         {
             System.out.println(PROVIDERS_LABEL + CurrencyProviderFactory.getProvidersList().toString());

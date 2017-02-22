@@ -5,6 +5,9 @@ import com.beust.jcommander.Parameter;
 
 public class CommandLineArgs {
 
+    @Parameter(names={ "-h", "--help" }, description = "show usage")
+    boolean help;
+
     @Parameter(names="--from", description = "Currency from")
     String from;
 
@@ -38,5 +41,9 @@ public class CommandLineArgs {
 
     public boolean isProviders() {
         return providers;
+    }
+
+    public boolean isHelp() {
+        return help;
     }
 }
