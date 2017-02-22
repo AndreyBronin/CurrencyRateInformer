@@ -16,7 +16,7 @@ public class PoloniexCurrencyProvider implements CurrencyProvider {
     }
 
     @Override
-    public String GetRate(String Base) {
+    public String GetRate(String from, String to) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 

@@ -1,5 +1,6 @@
 package CurrencyRateInformer.api.fixer;
 
+import java.util.Map;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -14,7 +15,7 @@ public class ApiResponse {
  private String date;
  @SerializedName("rates")
  @Expose
- private Rates rates;
+ private Map<String, Double> rates;
 
  public String getBase() {
   return base;
@@ -32,13 +33,10 @@ public class ApiResponse {
   this.date = date;
  }
 
- public Rates getRates() {
+ public Map<String, Double> getRates() {
   return rates;
  }
 
- public void setRates(Rates rates) {
-  this.rates = rates;
- }
 
 
 }

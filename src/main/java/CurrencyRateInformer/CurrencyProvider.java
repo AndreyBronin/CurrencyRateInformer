@@ -14,10 +14,11 @@ public interface CurrencyProvider
     public List<String> GetCurrencyList() throws Exception;
 
     /**
-     * @param Base currency convertion from
+     * @param from currency convertion from
+     * @param to currency convertion to
      * @return currency rate
      */
-    public String GetRate(String Base) throws Exception;
+    public String GetRate(String from, String to) throws Exception;
 
     /**
      * @return api provider name

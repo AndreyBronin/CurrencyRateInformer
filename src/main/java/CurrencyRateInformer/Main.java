@@ -4,13 +4,16 @@ import com.beust.jcommander.*;
 
 import java.util.List;
 
-//currency exchange rates
+/**
+ * Main application class
+ */
 public class Main {
 
     private static final String ERROR_MESSAGE_UNKNOWN_CURRENCY = "Unknown curreny eror.";
     private static final String ERROR_LABEL = "Application get error: ";
     private static final String LIST_LABEL = "Currency list: ";
     private static final String PROVIDERS_LABEL = "Providers list: ";
+    private static final String RATE_LABEL_FORMAT = "%s => %s rate is %s \n";
 
     public static void main(String[] args) {
 
@@ -44,7 +47,10 @@ public class Main {
 
             if (currencyList.contains(cliParams.getFrom()) && currencyList.contains(cliParams.getTo()))
             {
+                String rate = provider.GetRate(cliParams.getFrom(), cliParams.getTo());
+                System.out.printf(RATE_LABEL_FORMAT, cliParams.getFrom(), cliParams.getTo(), rate);
 
+                System.exit(0);
             }
             else
             {

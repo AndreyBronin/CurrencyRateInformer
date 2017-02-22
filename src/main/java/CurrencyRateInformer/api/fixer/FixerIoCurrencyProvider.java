@@ -6,39 +6,50 @@ import retrofit2.Response;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.Retrofit;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 
 public class FixerIoCurrencyProvider implements CurrencyProvider {
 
+    private Retrofit retrofit;
+    private Api apiService;
 
-    @Override
-    public List<String> GetCurrencyList() throws Exception{
-
-
-        Retrofit retrofit = new Retrofit.Builder()
+    public FixerIoCurrencyProvider()
+    {
+        retrofit = new Retrofit.Builder()
                 .baseUrl("http://api.fixer.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        Api service = retrofit.create(Api.class);
-        //Call<ApiResponse> call = service.getCurrencyList("USD");
-        Call<ApiResponse> call = service.getRate("RUB", "USD");
-        Response<ApiResponse> responce;
-
-        responce = call.execute();
-
-        ApiResponse r = responce.body();
-
-        //TODO
-        return Arrays.asList("EUR", "USD", "RUB");
+        apiService = retrofit.create(Api.class);
     }
 
     @Override
-    public String GetRate(String Base) {
+    public List<String> GetCurrencyList() throws Exception{
 
-        throw new UnsupportedOperationException("Not implemented yet");
+        Call<ApiResponse> call = apiService.getCurrencyList();
+        Response<ApiResponse> responce;
+        responce = call.execute();
+
+        Map<String, Double> rates = responce.body().getRates();
+
+        List<String> list = new ArrayList<String>(rates.keySet());
+        //add base element "EUR"
+        list.add(responce.body().getBase());
+        return list;
+    }
+
+    @Override
+    public String GetRate(String from, String to) throws Exception{
+
+        Call<ApiResponse> call = apiService.getRate(from, to);
+        Response<ApiResponse> responce;
+        responce = call.execute();
+        Map<String, Double> rates = responce.body().getRates();
+        return rates.values().toArray()[0].toString();
     }
 
     @Override
