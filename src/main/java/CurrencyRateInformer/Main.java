@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Main {
 
-    private static final String ERROR_MESSAGE_UNKNOWN_CURRENCY = "Unknown curreny eror.";
+    private static final String ERROR_MESSAGE_UNKNOWN_CURRENCY = "Unknown currenсy eror.";
     private static final String ERROR_LABEL = "Application get error: ";
     private static final String LIST_LABEL = "Currency list: ";
     private static final String PROVIDERS_LABEL = "Providers list: ";
