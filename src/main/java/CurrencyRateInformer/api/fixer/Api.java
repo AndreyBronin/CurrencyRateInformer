@@ -7,9 +7,6 @@ import retrofit2.http.Query;
 
 public interface Api {
 
-    //@GET("{latest")
-    //Call<List<RateObject>> latest(String base);
-
     @GET("/latest")
     Call<ApiResponse> getCurrencyList(@Query("base") String base);
 

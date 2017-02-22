@@ -6,6 +6,7 @@ import retrofit2.Response;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.Retrofit;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -13,7 +14,7 @@ public class FixerIoCurrencyProvider implements CurrencyProvider {
 
 
     @Override
-    public List<String> GetCurrencyList() {
+    public List<String> GetCurrencyList() throws Exception{
 
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -26,21 +27,23 @@ public class FixerIoCurrencyProvider implements CurrencyProvider {
         Call<ApiResponse> call = service.getRate("RUB", "USD");
         Response<ApiResponse> responce;
 
-        try {
-            responce = call.execute();
-        }
-        catch (Exception e)
-        {
-            return null;
-        }
+        responce = call.execute();
 
         ApiResponse r = responce.body();
 
-        return null;
+        //TODO
+        return Arrays.asList("EUR", "USD", "RUB");
     }
 
     @Override
     public String GetRate(String Base) {
-        return null;
+
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    @Override
+    public String GetName()
+    {
+        return "fixer.io";
     }
 }
